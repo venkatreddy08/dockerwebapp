@@ -4,7 +4,6 @@ kind: StatefulSet
 metadata:
   name: devopsapp
 spec:
-  serviceName: devopsdb  
   replicas: 2
   selector:
     matchLabels:
@@ -15,12 +14,15 @@ spec:
         app: db
     spec:
       containers:
-        - name: devops-app
+        - name: cont-1
           image: venkatreddy08/devopsapp:dbimage
           ports:
             - containerPort: 3306
       imagePullSecrets:
         - name: mysecret
+
+
+
 
 ---
 apiVersion: v1
@@ -28,7 +30,7 @@ kind: Service
 metadata:
   name: devopsdb
 spec:
-  clusterIP: None  
+  clusterIP: None
   selector:
     app: db
   ports:
