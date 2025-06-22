@@ -14,17 +14,21 @@ spec:
         app: swiggy
     spec:
       containers:
-        - name: devops-app
+        - name: cont-1
           image: venkatreddy08/devopsapp:appimage
           ports:
             - containerPort: 8080
       imagePullSecrets:
         - name: mysecret
+
+
+
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc
+  name: appsvc
 spec:
   type: LoadBalancer
   selector:
